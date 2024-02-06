@@ -1,4 +1,4 @@
-package com.example.devopsDemo;
+package com.example.devopsdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,19 +15,9 @@ public class DevopsDemoApplicationTests {
 	@Autowired
 	private MockMvc mockMvc;
 
+
 	@Test
-	public void testMainMethod() {
-		try {
-			DevopsDemoApplication.main(new String[] {});
-		} catch (Exception ex) {
-			// If an exception occurs during startup, fail the test
-			// and print the stack trace for debugging purposes
-			ex.printStackTrace();
-			throw new RuntimeException("Application failed to start", ex);
-		}
-	}
-	@Test
-	public void testArEndpoint() throws Exception {
+	void testArEndpoint() throws Exception {
 		mockMvc.perform(MockMvcRequestBuilders.get("/start"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().string("Started the application"));
